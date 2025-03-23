@@ -141,8 +141,8 @@ if page == "Home":
         for algo, time in execution_times[ds].items():
             rows.append({"Dataset": ds, "Algorithm": algo, "Execution Time (approx in sec)": time})
     df_exec = pd.DataFrame(rows)
-    fig_exec = px.bar(df_exec, x="Dataset", y="Execution Time (sec)", color="Algorithm",
-                      barmode="group", template="plotly_white")
+    fig_exec = px.bar(df_exec, x="Dataset", y="Execution Time (approx in sec)", color="Algorithm",
+                  barmode="group", template="plotly_white")
     st.plotly_chart(fig_exec, use_container_width=True)
 
 
