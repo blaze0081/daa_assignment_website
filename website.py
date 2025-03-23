@@ -44,26 +44,26 @@ maximal_cliques_count = {
 }
 
 execution_times = {
-    "Wiki-Vote": {"algo1": 1500, "algo2": 2000, "algo3": 1800},
-    "Email-Enron": {"algo1": 2750, "algo2": 3200, "algo3": 3000},
-    "as-skitter": {"algo1": 3500, "algo2": 4000, "algo3": 3700}
+    "Wiki-Vote": {"Tomita_2006": 5, "ELS": 20, "Chiba_1985": 600},
+    "Email-Enron": {"Tomita_2006": 40, "ELS": 20, "Chiba_1985": 700},
+    "as-skitter": {"Tomita_2006": 1750, "ELS": 1600}
 }
 
 # Clique Size Distributions 
 clique_distributions = {
     "Wiki-Vote": {
-        2: 8635, 3: 13718, 4: 27292, 5: 48416, 6: 68872,
+        2: 8655, 3: 13718, 4: 27292, 5: 48416, 6: 68872,
         7: 83266, 8: 76732, 9: 54456, 10: 35470, 11: 21736,
         12: 11640, 13: 5449, 14: 2329, 15: 740, 16: 208, 17: 23
     },
     "Email-Enron": {
-        2: 13343, 3: 7077, 4: 13319, 5: 18143, 6: 22715,
+        2: 14070, 3: 7077, 4: 13319, 5: 18143, 6: 22715,
         7: 25896, 8: 24766, 9: 22884, 10: 21393, 11: 17833,
         12: 15181, 13: 11487, 14: 7417, 15: 3157, 16: 1178,
         17: 286, 18: 41, 19: 10, 20: 6
     },
     "as-skitter": {
-        2: 2319207, 3: 3171609, 4: 1823321, 5: 939336, 6: 684873,
+        2: 2319807, 3: 3171609, 4: 1823321, 5: 939336, 6: 684873,
         7: 598284, 8: 588889, 9: 608937, 10: 665661, 11: 728098,
         12: 798073, 13: 877282, 14: 945194, 15: 980831, 16: 939987,
         17: 839330, 18: 729601, 19: 639413, 20: 600192, 21: 611976,
@@ -139,9 +139,9 @@ if page == "Home":
     rows = []
     for ds in dataset_names:
         for algo, time in execution_times[ds].items():
-            rows.append({"Dataset": ds, "Algorithm": algo, "Execution Time (ms)": time})
+            rows.append({"Dataset": ds, "Algorithm": algo, "Execution Time (approx in sec)": time})
     df_exec = pd.DataFrame(rows)
-    fig_exec = px.bar(df_exec, x="Dataset", y="Execution Time (ms)", color="Algorithm",
+    fig_exec = px.bar(df_exec, x="Dataset", y="Execution Time (sec)", color="Algorithm",
                       barmode="group", template="plotly_white")
     st.plotly_chart(fig_exec, use_container_width=True)
 
